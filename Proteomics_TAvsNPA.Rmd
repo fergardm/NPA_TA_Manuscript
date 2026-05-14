@@ -39,7 +39,7 @@ data <- as.data.frame(data)
 
 ```{r}
 
-# Remove duplicate rows based on Protein.IDs:(no duplicated rows)
+# Remove duplicate rows based on Protein.IDs:
 
 data <- data[!duplicated(data$Genes), ]
 
@@ -110,8 +110,6 @@ samples$new_ID <- c("NPA_S4","TA_S4","NPA_S1", "TA_S1",
 #  mutate(def.id=paste0("Sample_",samples$new_ID))
 samples$type <- factor(samples$type, levels = c("NF", "TQ"), labels = c("NPA","TA"))
 # before order, we must keep only the samples we'll need in this experiment:
-## NEW ADDED FEATURE TO THE HOLE SCRIPT, THIS IS VERY IMPORTANT, WE DONT NEED FURTHER
-## EDITION OF THE PACIENTES XLS RESULTS TABLE IN EXCEL
 
 df_new_prot <- df_protein[,colnames(df_protein) %in% samples$new_sample]
 samples <- samples[str_order(sapply(str_extract_all(samples$new_ID, "\\d+"), 
@@ -628,9 +626,9 @@ r.tabl.all.TA <- result.table.all[result.table.all$query=="TA",]
 length(rownames(r.tabl.all.TA[r.tabl.all.TA$source=="TF",]))
 length(rownames(r.tabl.all.TA[r.tabl.all.TA$source=="MIRNA",]))
 
-hola <- venndetail(list(NPA=r.tabl.all.NPA$term_id, TA=r.tabl.all.TA$term_id))
-hola.res <- result(hola)
-shared.ids <- hola.res$Detail[hola.res$Subset=="Shared"]
+c.shared <- venndetail(list(NPA=r.tabl.all.NPA$term_id, TA=r.tabl.all.TA$term_id))
+c.shared.res <- result(c.shared)
+shared.ids <- c.shared.res$Detail[c.shared.res$Subset=="Shared"]
 
 red.all.NPA <- r.tabl.all.NPA[r.tabl.all.NPA$term_id %in% shared.ids,]
 red.all.NPA <- red.all.NPA[,c(6,10:11)]
