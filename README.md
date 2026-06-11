@@ -5,7 +5,10 @@ Up to this date, only one script is available:
 
 + **Proteomics_TAvsNPA.Rmd** : all the code used for this study
 
+RAW MS/MS samples and the resulting data matrices from DIA-NN are publicly available at PRIDE (proyect ID: [PXD078554](https://www.ebi.ac.uk/pride/archive/projects/PXD078554)) 
+
 Any updates will be posted in this *README* file.
 
 Thank you, 
+
 PARADYS proteomics team
